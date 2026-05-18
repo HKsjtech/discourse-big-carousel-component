@@ -37,8 +37,7 @@ big_carousel_slides:
             "type": "string"
           }, 
           "text": {
-            "type": "string", 
-            "minLength": 1 
+            "type": "string"
           }, 
           "text_bg": { 
             "type": "string" 

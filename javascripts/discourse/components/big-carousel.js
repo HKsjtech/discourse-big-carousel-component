@@ -92,9 +92,22 @@ export default Component.extend({
   didInsertElement() {
     this._super(...arguments);
     this.appEvents.on("page:changed", this, "ensureSlider");
+
+    // Handle user activity post click
+    this.element.addEventListener("click", (e) => {
+      const postElement = e.target.closest(".bc-user-post");
+      if (postElement) {
+        e.preventDefault();
+        const topicId = postElement.dataset.topicId;
+        if (topicId) {
+          window.location.href = `/t/${topicId}`;
+        }
+      }
+    });
   },
 
   willDestroyElement() {
     this.appEvents.off("page:changed", this, "ensureSlider");
+    this.element?.removeEventListener("click", this._boundActivityClickHandler);
   },
 });

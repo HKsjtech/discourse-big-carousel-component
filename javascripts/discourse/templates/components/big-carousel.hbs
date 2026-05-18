@@ -10,7 +10,8 @@
 
     <div class="custom-big-carousel-slides">
       {{#each bigStaticSlides as |bs|}}
-        <div
+        <a
+          href={{bs.link}}
           class="custom-big-carousel-slide"
           style={{html-safe
             (concat
@@ -30,15 +31,13 @@
                 style={{html-safe (concat "background:" bs.text_bg)}}
               >
                 <div class="custom-big-carousel-main-content">
-                  <a href={{bs.link}} class="custom-big-carousel-text-link">
-                    <h2>
-                      {{bs.headline}}
-                    </h2>
+                  <h2>
+                    {{bs.headline}}
+                  </h2>
 
-                    <p>
-                      {{bs.text}}
-                    </p>
-                  </a>
+                  <p>
+                    {{bs.text}}
+                  </p>
 
                   {{#if (and bs.button_text bs.link)}}
                     <a href={{bs.link}} class="btn btn-primary btn-text">
@@ -49,11 +48,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </a>
       {{/each}}
 
       {{#each bigUserSlides as |bs|}}
-        <div
+        <a
+          href="/u/{{bs.link}}"
           class="custom-big-carousel-slide user-slide"
           style={{html-safe
             (concat
@@ -75,22 +75,16 @@
                   </h4>
                   <div style={{html-safe (concat "background:" bs.text_bg)}}>
                     <h3>
-                      <a href="/u/{{bs.user_info.user.username}}">
+                      <span>
                         {{avatar bs.user_info.user imageSize="huge"}}
                         {{bs.user_info.user.username}}
-                      </a>
+                      </span>
                     </h3>
                   </div>
 
                   <p class="bs-main-text">
                     {{bs.text}}
                   </p>
-
-                  {{#if (and bs.button_text bs.link)}}
-                    <a href="/u/{{bs.link}}" class="btn btn-primary btn-text">
-                      {{bs.button_text}}
-                    </a>
-                  {{/if}}
                 </div>
 
                 {{#if bs.user_activity}}
@@ -98,15 +92,13 @@
                     <h4>Recent Activity</h4>
 
                     {{#each bs.user_activity as |activity|}}
-                      <div class="bc-user-post">
-                        <a href="/t/{{activity.topic_id}}">
-                          <div class="bc-user-post-title">
-                            {{activity.title}}
-                          </div>
-                          <p class="bc-user-post-excerpt">
-                            {{html-safe activity.excerpt}}
-                          </p>
-                        </a>
+                      <div class="bc-user-post" data-topic-id="{{activity.topic_id}}">
+                        <div class="bc-user-post-title">
+                          {{activity.title}}
+                        </div>
+                        <p class="bc-user-post-excerpt">
+                          {{html-safe activity.excerpt}}
+                        </p>
                       </div>
                     {{/each}}
                   </div>
@@ -114,7 +106,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </a>
       {{/each}}
     </div>
 
