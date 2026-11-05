@@ -1,0 +1,5 @@
+zh_CN:
+  theme_metadata:
+    settings:
+      big_carousel_slides: "image_url 是电脑端图片，mobile_image_url 是移动端图片。移动端留空时继续使用电脑端图片。"
+      big_carousel_min_height: "只在没有图片的幻灯片上使用。有图片时宽度铺满，高度随图片比例变化。"

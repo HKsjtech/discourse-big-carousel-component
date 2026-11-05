@@ -1,4 +1,12 @@
 .custom-big-carousel {
+  .custom-big-carousel-image.is-desktop {
+    display: none;
+  }
+
+  .custom-big-carousel-image.is-mobile {
+    display: block;
+  }
+
   .custom-big-carousel-content {
     padding: 2em 1em;
   }

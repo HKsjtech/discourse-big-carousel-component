@@ -11,9 +11,7 @@
 }
 
 .tns-item {
-  min-height: $big-carousel-min-height;
-  background-size: cover;
-  background-position: top;
+  background-color: transparent;
 }
 
 .custom-big-carousel {
@@ -73,6 +71,21 @@
 
   .custom-big-carousel-slide {
     position: relative;
+    display: block;
+
+    &:not(.has-image) {
+      min-height: $big-carousel-min-height;
+    }
+  }
+
+  .custom-big-carousel-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .custom-big-carousel-image.is-mobile {
+    display: none;
   }
 
   .custom-big-carousel-content {
@@ -206,7 +219,6 @@
 }
 
 .custom-big-carousel {
-  min-height: $big-carousel-min-height;
   position: relative;
 
   .loading-container.visible {

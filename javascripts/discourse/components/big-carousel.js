@@ -58,6 +58,7 @@ export default Component.extend({
               container: ".custom-big-carousel-slides",
               items: 1,
               controls: true,
+              autoHeight: true,
               autoplay: settings.big_carousel_autoplay,
               speed: settings.big_carousel_speed,
               prevButton: ".custom-big-carousel-prev",

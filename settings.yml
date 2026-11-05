@@ -8,6 +8,7 @@ show_on:
   description: top_menu refers to pages set in the <a href="/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a>
 
 big_carousel_slides:
+  description: "image_url is the desktop banner. mobile_image_url is the mobile banner. Leave mobile_image_url empty to reuse the desktop image."
   default: >-
     [
       {
@@ -17,6 +18,7 @@ big_carousel_slides:
         "text_bg": "#000", "button_text": 
         "click here", 
         "image_url": "", 
+        "mobile_image_url": "", 
         "slide_bg_color": "#000", 
         "slide_type": "slide"
       }
@@ -48,6 +50,9 @@ big_carousel_slides:
           "image_url": {
             "type": "string" 
           }, 
+          "mobile_image_url": {
+            "type": "string" 
+          }, 
           "slide_bg_color": { 
             "type": "string" 
           }, 
@@ -62,6 +67,7 @@ big_carousel_slides:
 big_carousel_min_height:
   type: string
   default: 300px
+  description: "Used only when a slide has no image. Slides with an image are full width and as tall as that image."
 
 big_carousel_autoplay:
   type: bool
