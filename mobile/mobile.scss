@@ -8,11 +8,17 @@
   }
 
   .custom-big-carousel-content {
-    padding: 2em 1em;
+    padding: 2em 1em 3.5em;
+  }
+
+  .custom-big-carousel-controls {
+    bottom: 0.75em;
+    gap: 0.5em;
   }
 
   .custom-big-carousel-next,
   .custom-big-carousel-prev {
-    display: none !important;
+    width: 2em;
+    height: 2em;
   }
 }

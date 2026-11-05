@@ -16,56 +16,81 @@
 
 .custom-big-carousel {
   position: relative;
+
+  .custom-big-carousel-controls {
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    bottom: 1.25em;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2em;
+  }
+
   .custom-big-carousel-next,
   .custom-big-carousel-prev {
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
+    display: flex;
     align-items: center;
-    z-index: 2;
-    color: white;
-    font-size: var(--font-up-5);
-    padding: 1em 0.5em;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: #f6f6f7;
+    color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
     cursor: pointer;
+    flex: 0 0 auto;
+
+    .d-icon {
+      width: 1em;
+      height: 1em;
+    }
+
     &:hover {
-      color: var(--tertiary);
+      color: #5f6368;
     }
-  }
-
-  &:hover {
-    .custom-big-carousel-next,
-    .custom-big-carousel-prev {
-      display: flex;
-    }
-  }
-
-  .custom-big-carousel-next {
-    right: 0;
-  }
-
-  .custom-big-carousel-prev {
-    left: 0;
   }
 
   .custom-big-carousel-nav {
-    position: absolute;
     display: flex;
-    z-index: 3;
-    bottom: 1em;
-    width: 100%;
-    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    // height: 1.35em;
+    padding: 0.75em 1.7em;
+    border-radius: 999px;
+    background: rgba(92, 96, 105, 0.38);
   }
 
   .custom-big-carousel-nav-item {
-    width: 0.75em;
-    height: 0.75em;
-    border-radius: 100px;
-    background: white;
-    margin: 0 0.25em;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
     cursor: pointer;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.2s ease;
+
     &.tns-nav-active {
-      background: var(--tertiary);
+      width: 4em;
+      background: rgba(255, 255, 255, 0.35);
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: inherit;
+        background: #fff;
+        transform: scaleX(0);
+        transform-origin: left center;
+        animation: big-carousel-nav-progress var(--big-carousel-progress, 5s)
+          linear forwards;
+      }
     }
   }
 
@@ -231,4 +256,17 @@
 [data-action="stop"],
 [data-action="start"] {
   display: none;
+}
+
+@keyframes big-carousel-nav-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-big-carousel-nav-item.tns-nav-active::after {
+    animation: none;
+    transform: scaleX(1);
+  }
 }

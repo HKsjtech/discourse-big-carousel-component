@@ -53,18 +53,30 @@ export default Component.extend({
           this.set("bigUserSlides", bigUserSlides);
           this.set("bigStaticSlides", bigStaticSlides);
           loadScript(settings.theme_uploads_local.tiny_slider).then(() => {
-            // slider script
-            tns({
+            const progressMs = 5000;
+            const root =
+              this.element.querySelector(".custom-big-carousel") || this.element;
+            root.style.setProperty("--big-carousel-progress", `${progressMs}ms`);
+
+            const slider = tns({
               container: ".custom-big-carousel-slides",
               items: 1,
               controls: true,
               autoHeight: true,
               autoplay: settings.big_carousel_autoplay,
+              autoplayTimeout: progressMs,
               speed: settings.big_carousel_speed,
               prevButton: ".custom-big-carousel-prev",
               nextButton: ".custom-big-carousel-next",
               navContainer: ".custom-big-carousel-nav",
             });
+
+            if (settings.big_carousel_autoplay && slider?.events) {
+              slider.events.on("indexChanged", () => {
+                slider.pause();
+                slider.play();
+              });
+            }
           });
         })
         .finally(() => {
