@@ -18,7 +18,16 @@
 
   .custom-big-carousel-next,
   .custom-big-carousel-prev {
-    width: 2em;
-    height: 2em;
+    display: none;
   }
+  .custom-big-carousel-nav{
+    padding:9px 19px;
+  }
+  .custom-big-carousel-nav-item{
+    width: 6px;
+    height: 6px;
+  }
+   .custom-big-carousel-nav-item.tns-nav-active{
+    width: 46px;
+   }
 }
